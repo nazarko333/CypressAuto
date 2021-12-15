@@ -1,0 +1,24 @@
+{
+    "name": "cypressauto",
+    "version": "1.0.0",
+    "description": "my cypress auto framework",
+    "main": "index.js",
+    "scripts": {
+        "test": ".\\node_modules\\.bin\\cypress run",
+        "headTest": "npm run test -- --headed",
+        "chromeTest": "npm run test -- --browser chrome",
+        "recordDashBoardTest": "npm run test -- --record --key 70b5c1ca-73b7-4d2e-93ae-b0c4e1243bb8 --reporter mochawesome",
+        "cypressrun": "cypress run",
+        "cypressopen": "cypress open",
+        "GreenKartTest": "npm run test -- --spec 'cypress\\integration\\GreenKart\\*'"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "cypress": "^9.1.1",
+        "cypress-iframe": "^1.0.1",
+        "mocha": "9.1.3",
+        "mochawesome": "^7.0.1",
+        "yarn": "^1.22.17"
+    }
+}

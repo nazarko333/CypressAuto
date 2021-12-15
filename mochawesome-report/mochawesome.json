@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-11-05T19:18:48.542Z",
+    "end": "2021-11-05T19:19:03.126Z",
+    "duration": 14584,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f339f1c8-1737-4b8c-a04f-e755191d59ef",
+      "title": "",
+      "fullFile": "cypress/integration/test9.js",
+      "file": "cypress/integration/test9.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2623a82e-687d-4fcc-a52f-ae1850494e76",
+          "title": "My second Test suit",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "First test",
+              "fullTitle": "My second Test suit First test",
+              "timedOut": null,
+              "duration": 11941,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//we can make own config in our test without cypress.json and where we put it there will be timeout\nCypress.config(\"defaultCommandTimeout\", 8000); //pageObject\nconst productPage = new _ProductPage.default();\nconst homePage = new _HomePage.default(); //using enviromental variables\ncy.visit(Cypress.env(\"url\") + \"/angularpractice/\"); //replace by pageObject\nhomePage.getEditBoxtype().type(this.data.name); //cy.get('input[name=\"name\"]:nth-child(2)').type(this.data.name);\nhomePage.getGender().select(this.data.gender); //cy.get(\"select\").select(this.data.gender);\n//validate attributes properties\nhomePage.getTwoWayDataBinding().should(\"have.value\", this.data.name); //cy.get(\":nth-child(4) > .ng-untouched\").should(\"have.value\", this.data.name);\nhomePage.getEditBoxtype().should(\"have.attr\", \"minlength\", \"2\"); //cy.get('input[name=\"name\"]:nth-child(2)').should(\"have.attr\", \"minlength\", \"2\");\nhomePage.getEntrepreneaur().should(\"be.disabled\"); //cy.get('#inlineRadio3').should(\"be.disabled\");\n//pause\n//cy.pause();\n//debug\n// cy.debug();\n//look for some elements with text\nhomePage.getShopTab().click(); //cy.get(':nth-child(2) > .nav-link').click();\n// cy.get(\"h4.card-title\").each(($el, index, $list) => {\n//     if ($el.text().includes(\"Blackberry\")) {\n//         cy.get(\"button.btn.btn-info\").eq(index).click();\n//     }\n// })\n// //using commands.js\n// cy.selectProduct(\"Blackberry\");\n// cy.selectProduct(\"Nokia Edge\");\n//Parameterizing the test data from json files using each command\nthis.data.productName.forEach(function (element) {\n  cy.selectProduct(element);\n  ;\n});\nproductPage.checkOutButton().click(); //sum of products\nlet sum = 0;\ncy.get(\"tr td:nth-child(4) strong\").each(($el, index, $list) => {\n  const amount = $el.text();\n  let res = amount.split(\" \");\n  res = res[1].trim();\n  sum += +res;\n  cy.log(sum);\n}).then(function () {\n  cy.log(sum);\n});\ncy.get(\"h3 strong\").then(function (element) {\n  const amount = element.text();\n  let res = amount.split(\" \");\n  let total = +res[1].trim();\n  expect(total).to.equal(sum);\n}); //it's all was sum of products\ncy.contains(\"Checkout\").click();\ncy.get(\"#country\").type(\"India\"); //cy.wait(4000);\ncy.get(\".suggestions > ul > li > a\").click();\ncy.get(\"#checkbox2\").click({\n  force: true\n});\ncy.get('input[type=\"submit\"]').click(); //cy.get(\".alert\").should(\"have.text\", \"Success! Thank you! Your order will be delivered in next few weeks :-).\");\n//using mocha for assertion\ncy.get(\".alert\").then(function (element) {\n  const actualText = element.text();\n  expect(actualText.includes(\"Success\")).to.be.true;\n}); //cy.contains(\"Purchase\").click();\n// run specific test with specific address\n//./node_modules/.bin/cypress run --spec cypress/integration/test9.js --env url=https://google.com --headed\n//command to show results on dashboard of cypress\n//  ./node_modules/.bin/cypress run --record --key 70b5c1ca-73b7-4d2e-93ae-b0c4e1243bb8\n//command to run our tests using mochawesome\n// ./node_modules/.bin/cypress run --reporter mochawesome --spec cypress/integration/test9.js --browser chrome",
+              "err": {},
+              "uuid": "4a1b3962-6ed4-43ad-854c-ba887564701f",
+              "parentUUID": "2623a82e-687d-4fcc-a52f-ae1850494e76",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4a1b3962-6ed4-43ad-854c-ba887564701f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11941,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.0"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.0"
+    }
+  }
+}
